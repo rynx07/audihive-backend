@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id        Int      @id @default(autoincrement())
+  role      Role?
+  profile   Profile?
+}
+
+model Posts {
+  post_ID   Int     @id @default(autoincrement())
+  content   String
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId Int?
+}
+
+enum Role {
+  ADMIN
+  MUSICIAN
+  EVENT_ORG 
+}
+
+model Profile {
+  id         Int    @id @default(autoincrement())
+  username   String
+  email      String
+  firstname  String
+  lastname   String
+  password   String
+  category   String
+
+  AdminID    Int?   @unique
+  user       Users? @relation(fields: [AdminID], references: [id])
+  posts      Posts[]
+  merch      Merch[]
+}
+
+model Merch {
+  id Int @id @default(autoincrement())
+  merchName String
+  merchType String 
+  merchCost Float  
+  merchQty Float
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId Int?
+}
+
+model Tickets {
+  id Int @id @default(autoincrement())
+  ticketName String 
+  ticketType String 
+  ticketCost Float 
+  ticketQty Float 
+}
+
+model Events {
+  id Int @id @default(autoincrement())
+  eventName String
+  eventDate String 
+}
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  merchId     Int
+  quantity    Int
+  totalPrice  Float
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
