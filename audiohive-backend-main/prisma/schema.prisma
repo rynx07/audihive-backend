@@ -8,9 +8,9 @@ datasource db {
 }
 
 model Users {
-  id        Int      @id @default(autoincrement())
-  role      Role?
-  profile   Profile?
+  id      Int      @id @default(autoincrement())
+  role    Role?
+  profile Profile?
 }
 
 model Posts {
@@ -27,50 +27,52 @@ enum Role {
 }
 
 model Profile {
-  id         Int    @id @default(autoincrement())
-  username   String
-  email      String
-  firstname  String
-  lastname   String
-  password   String
-  category   String
+  id        Int        @id @default(autoincrement())
+  username  String
+  password  String
+  category  String
+  balance   Float      @default(0)
+  earnings  Float      @default(0)
 
-  AdminID    Int?   @unique
-  user       Users? @relation(fields: [AdminID], references: [id])
-  posts      Posts[]
-  merch      Merch[]
+  user      Users?     @relation(fields: [userId], references: [id])
+  userId    Int?       @unique
+  posts     Posts[]
+  purchases Purchase[] @relation("Buyer")
+  sales     Purchase[] @relation("Seller")
 }
 
 model Merch {
-  id Int @id @default(autoincrement())
+  
+  id        Int      @id @default(autoincrement())
   merchName String
   merchType String 
   merchCost Float  
-  merchQty Float
-  profile   Profile? @relation(fields: [profileId], references: [id])
-  profileId Int?
+  merchQty  Float
+  profileId Int? 
 }
 
 model Tickets {
-  id Int @id @default(autoincrement())
+  id         Int      @id @default(autoincrement())
   ticketName String 
   ticketType String 
   ticketCost Float 
-  ticketQty Float 
+  ticketQty  Float 
 }
 
 model Events {
-  id Int @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   eventName String
   eventDate String 
 }
 
-model Order {
-  id          Int      @id @default(autoincrement())
-  userId      Int
-  merchId     Int
-  quantity    Int
-  totalPrice  Float
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+model Purchase {
+  id        Int      @id @default(autoincrement())
+  buyerId   Int
+  sellerId  Int
+  amount    Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  buyer     Profile  @relation("Buyer", fields: [buyerId], references: [id])
+  seller    Profile  @relation("Seller", fields: [sellerId], references: [id])
 }
