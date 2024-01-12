@@ -1,0 +1,145 @@
+.profile {
+    display:flex;
+}
+
+.profileRight{
+    flex: 9;
+}
+
+.profileRightBottom{
+    background-color: #E6F0F4;
+    width: 700px;
+    height: auto;
+    margin-left: 50px;
+    margin-top: 150px;
+    margin-bottom: 100px;
+    border-radius: 10px;
+    border-color: black;
+}
+
+.⬛{
+    background-color: #74B8C2;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+.testText{
+    padding-bottom: 2%;
+    margin: 10px;
+    
+}
+
+.profileCover{
+    height: 400px;
+    position: relative;
+}
+
+.profileCoverImg{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 75px 0 0 0;
+}
+
+.profileUserImg {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 50%;
+    right: 0;
+    top: 300px;
+    border: 7px solid white;
+    
+}
+
+.profileInfo{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 40%;
+    width: 500px;
+}
+
+.profileInfoName{
+    font-size: 30px;
+}
+
+.profileDesc{
+    font-weight: 300;
+    background-color: aqua;
+}
+
+.🍆 {
+    width: 300px;
+    height: auto;
+    float: left;
+    display: flex;
+    z-index: 2;
+    position: absolute;
+    bottom: -25%; 
+}
+
+.contentHolder {
+    display: flex;
+}
+
+.red {
+    display: block;
+}
+
+.profileSkills {
+    background-color: #e6f0f4;
+    width: 350px;
+    height: 200px;
+    margin-left: 50px;
+    margin-top: 80px;
+    border-radius: 10px;
+    border-color: black;
+}
+
+
+.worksDiv {
+    width: 80%;
+    height: 500px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+
+}
+
+.horizon-scroll {
+    height: 50vh;
+    max-width: 50vw;
+    display: flex;
+    overflow-x: scroll;
+    white-space: nowrap;
+    margin: 20px;
+    scrollbar-width: thin;
+
+}
+
+.testing {
+    height: 100%;
+    min-width: 500px;
+    background-color: #74B8C2;
+    border-color: black;
+    margin: 0 5px 0 5px;
+}
+
+.testButton {
+    width: 145px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 220px;
+    border-radius: 10px;
+    background-color: #02C39A;
+    border: none;
+    font-family: Montserrat;
+    font-weight: 500;
+    cursor: pointer;
+}

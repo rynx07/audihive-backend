@@ -1,0 +1,121 @@
+.topbarContainer {
+    height: 75px;
+    width: 100%;
+    background-color: #00a896;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  
+  .logo {
+    font-size: 24px;
+    margin-left: 20px;
+    font-weight: bold;
+    color: #f7f2ef;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .topbarLeft {
+    flex: 3;
+    display: flex;
+    
+  }
+  .topbarCenter {
+    flex: 5;
+    display: flex;
+  }
+  
+  .searchbar {
+    width: 75%;
+    height: 30px;
+    background-color: #f7f2ef;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+  }
+  .search {
+    font-size: 20px !important;
+    margin-left: 10px;
+  }
+  
+  .searchInput {
+    border: none;
+    width: 40%;
+  }
+  .searchInput:focus {
+    outline: none;
+  }
+  
+  .topbarRight {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #f0f3bd;
+   
+    width: 40%;
+  }
+  
+  .topbarImg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  
+  .topbarLink {
+    margin-right: 10px;
+    font-style: 14px;
+    cursor: pointer;
+  }
+  
+  .topbarIcons {
+    display: flex;
+    width: 50px;
+    height: auto;
+    justify-content: space-between;
+  }
+  
+  .topbarIcons ul {
+    /* brother this is your div ul*/
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+  
+  }
+  
+  .topbarIconItem {
+    margin-right: 15px;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+  
+  }
+  
+  
+  .topbarIcons li:hover {
+      transform: scale(1.25);
+      transition: transform 200ms ease-out; /* Apply ease-out to the transform property */
+    }
+    
+  .topbarIcons li:hover::after {
+      transition: ease-out;
+    }
+    
+  .topbarIconBadge {
+    width: 15px;
+    height: 15px;
+    background-color: #f00;
+    border-radius: 50%;
+    color: #f0f3bd;
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    top: -2px;
+    right: 0;
+  }
+  

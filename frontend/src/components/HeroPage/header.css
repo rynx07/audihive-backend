@@ -1,0 +1,67 @@
+.header{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: aquamarine;
+    height: 60dvh;
+}
+.headerTitle{
+    font-size: 70px;
+    font-weight: 500;
+
+    color: #000;
+}
+
+.headerText{
+    color: antiquewhite;
+    text-align: center;
+}
+
+.container{
+    padding: 1.5% 10%;
+    background-color: bisque;
+    margin:0  auto ;
+}
+/* TEMPORARY REMOVE LANG NI ANG BOX NA DIV */
+.circle{
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background-color: blue;
+}
+.container .wrapper{
+    display: flex;
+    background-color: aquamarine;
+    margin: 2.5% 0;
+}
+.container .wrapper .content-30{
+    width: 30%;
+    background-color: antiquewhite;
+}
+.container .wrapper .content-70{
+    width: 70%;
+    background-color: yellow;
+}
+
+/* SA CALL TO ACTION DIRI ANG MGA NAKABUTANG ANG MGA BUTTON NGA JOIN NOW */
+.cta{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: azure;
+    height: 80dvh;
+}
+.cta .content{
+    width: 50%;
+    padding: 5% 0;
+    background-color: antiquewhite;
+    text-align: center;
+}
+.cta .content button{
+    margin: 2.5% 0;
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    background-color: blue;
+    color: #f3f3f3;
+}

@@ -1,0 +1,131 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id      Int      @id @default(autoincrement())
+  role    Role?
+  profile Profile?
+}
+
+model Posts {
+  post_ID   Int       @id @default(autoincrement())
+  content   String
+  profileId Int
+  createdAt DateTime  @default(now())
+  comments  Comment[]
+  profile   Profile   @relation(fields: [profileId], references: [id])
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  postId    Int
+  profileId Int      @unique
+  post      Posts    @relation(fields: [postId], references: [post_ID])
+  profile   Profile  @relation(fields: [profileId], references: [id])
+}
+
+model Profile {
+  id        Int        @id @default(autoincrement())
+  username  String
+  email     String
+  firstname String
+  lastname  String
+  password  String
+  category  String
+  AdminID   Int?       @unique
+  comment   Comment?
+  balance   Float      @default(0)
+  earnings  Float      @default(0)
+  posts     Posts[]
+  user      Users?     @relation(fields: [AdminID], references: [id])
+  file      File[]
+  merch     Merch[]
+  purchases Purchase[] @relation("Buyer")
+  sales     Purchase[] @relation("Seller")
+
+  sentChats      Chat[]   @relation("SentChats")
+  receivedChats  Chat[]   @relation("ReceivedChats")
+}
+
+model Merch {
+  id        Int      @id @default(autoincrement())
+  merchName String
+  merchType String
+  merchCost Float
+  merchQty  Float
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId Int?
+}
+
+model Tickets {
+  id         Int    @id @default(autoincrement())
+  ticketName String
+  ticketType String
+  ticketCost Float
+  ticketQty  Float
+}
+
+model Events {
+  id        Int    @id @default(autoincrement())
+  eventName String
+  eventDate String
+}
+
+model File {
+  id        Int      @id @default(autoincrement()) //migrate this pls ty 
+  filename  String
+  mimetype  String
+  data      Bytes
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId Int? // Reference to the Profile model
+}
+
+enum Role {
+  ADMIN
+  MUSICIAN
+  EVENT_ORG
+}
+
+model Purchase {
+  purchaseID        Int      @id @default(autoincrement())
+  buyerId   Int
+  sellerId  Int
+  amount    Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  buyer  Profile @relation("Buyer", fields: [buyerId], references: [id])
+  seller Profile @relation("Seller", fields: [sellerId], references: [id])
+}
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  merchId     Int
+  quantity    Int
+  totalPrice  Int
+  status      String   @default("Pending")
+  createdAt   DateTime @default(now())
+}
+
+model Chat {
+  id        Int      @id @default(autoincrement())
+  senderId  Int
+  receiverId Int
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  sender    Profile  @relation("SentChats", fields: [senderId], references: [id])
+  receiver  Profile  @relation("ReceivedChats", fields: [receiverId], references: [id])
+}

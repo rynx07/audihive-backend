@@ -1,0 +1,100 @@
+.postContainer {
+  width: auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.postName {
+  font-size: 14px;
+  font-weight: 700;
+  color: #003331;
+}
+
+.userCategory {
+  font-size: 12px;
+  width: 100%;
+}
+
+.postBody {
+  width: 50%;
+  height: fit-content;
+  border-radius: 10px;
+  border: #1fe2ca 1px solid;
+  margin: 30px 0;   
+  padding: 25px;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.userHolder {
+  display: flex;
+  justify-content:space-evenly;
+  width: fit-content;
+
+  align-items: center;
+  width: 100%;
+}
+
+.postContent {
+  font-size: 30px;
+
+}
+
+.comment-section {
+  display: flex;
+  gap: 10px; /* Adjust the gap between components */
+  align-items: center;
+  justify-content: center;
+}
+
+
+.form-control {
+  width: 80%; 
+  padding: 8px;
+  border-radius: 5px;
+  border:  #1fe2ca 1px solid;
+  resize: none;
+  outline: none;
+  margin: 20px 0;
+}
+
+.form-label {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #999;
+}
+
+.float-end {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px; /* Adjust the gap between buttons */
+}
+
+.btn {
+  height: 40px;
+  width: auto;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #00a896;
+  color: #fff;
+  border: none;
+
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  color: #00a896;
+  border: none;
+}
+
+.send-icon {
+  color: #00a896;
+  cursor: pointer;
+  
+
+}

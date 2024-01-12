@@ -1,0 +1,194 @@
+.leftContainer{
+    flex: 3;
+    position: sticky;
+    top: 0;
+    height: auto;
+    height: 900px;
+    padding: 15px;
+}
+
+
+.rightbarWrapper{
+    padding: 20px 20px 0 0;
+    background: red;
+    height: 100%;
+}
+
+.eventContainer{
+    display: flex;
+    align-items: center;
+
+}
+
+.eventImg{
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    color: #65ADD3 !important;
+}
+
+.eventText{
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.rightBarAd{
+    width: 100%;
+    border-radius: 10px;
+    margin: 30px 0;
+
+}
+
+.rightbarTitle{
+    margin-bottom: 20px;
+}
+
+.rightbarFriendList{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.rightbarFriends{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rightbarProfileImgContainer{
+    margin-right: 10px;
+    position: relative;   
+}
+
+.rightbarProfileImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.rightbarOnline{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: greenyellow;
+    position: absolute;
+    top: -2px;
+    right: 0;
+    border: 2px solid white;
+
+}
+
+.rightbarUsername{
+    font-weight: 500;
+}
+
+.rightbarTitle{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.rightbarInfo{
+    margin-bottom: 30px;
+}
+
+.rightbarInfoItem{
+    margin-bottom: 10px;
+}
+
+.rightbarFollowingImg{
+    width: 100px; 
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 15px;
+    
+}
+
+.rightbarInfoKey{
+    font-weight: 500;
+    margin-right: 15px; 
+    color: #9E9E9E;
+}
+
+.rightbarInfoValue{
+    font-weight: 300;
+}
+
+
+.rightbarFollowings{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between
+}
+
+.rightbarFollowing{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+}
+
+.ProfileSidebar {
+    background-color: #effefb;
+    margin-left: 20px;
+    height: 175px;
+    border-radius: 15px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border: #1fe2ca 1px solid;
+    
+}
+
+
+.rightbarProfile {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.test {
+    display:block;
+    width: 15px;
+    margin-left: 10px;
+   justify-content: center;
+   width: 280px;
+}
+
+
+
+.horizontal-scroll {
+    height: 100px;
+    margin-top: 50px;
+    margin-bottom: 250px;
+    border-radius: 10px;
+    width: inherit;
+    margin-left: 10px;
+  }
+  
+  .scroll-content {
+    height: 30vh;
+    max-width: 400px;
+    display: flex;
+    overflow-x: scroll;
+    white-space: nowrap;
+    margin: 20px;
+    
+
+  }
+
+  .scroll-item {
+    height: 100%;
+    min-width: 500px;
+    background-color: #00A896;
+    border-color: black;
+    margin: 0 10px 0 10px;
+}
+
+.userName {
+    color: #000;
+
+}
