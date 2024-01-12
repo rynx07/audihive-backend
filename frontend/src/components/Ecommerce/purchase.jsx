@@ -6,6 +6,7 @@ const PurchaseProduct = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [merchandiseList, setMerchandiseList] = useState([]);
+  const [userDetails, setUserDetails] = useState(JSON.parse(localStorage.getItem('userDetails')));
 
   useEffect(() => {
     fetchAllProducts();
@@ -29,13 +30,20 @@ const PurchaseProduct = () => {
 
   const handleBuyProduct = async () => {
     try {
+      // Check if user is logged in
+      if (!localStorage.getItem('isLoggedIn')) {
+        setError('Please log in to buy a product.');
+        setMessage('');
+        return;
+      }
+
       const response = await fetch('http://localhost:3005/api/ecommerce/buymerch', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          userId: 1, // Replace with actual user ID or get it from your authentication system
+          userId: userDetails?.id,
           id: productId,
           quantity: parseInt(quantity),
         }),
@@ -45,7 +53,7 @@ const PurchaseProduct = () => {
         const data = await response.json();
         setMessage(`Product bought successfully! Order ID: ${data.id}`);
         setError('');
-        // Fetch updated product list after successful purchase
+        // Fetch updated product list after a successful purchase
         fetchAllProducts();
       } else {
         const data = await response.json();
@@ -54,14 +62,24 @@ const PurchaseProduct = () => {
       }
     } catch (error) {
       console.error('Error buying product:', error);
-      setError('Failed to buy product. Please try again.');
+      setError('Failed to buy the product. Please try again.');
       setMessage('');
     }
   };
 
   return (
     <div>
-      <h2>Buy Product</h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div>
+          {userDetails && (
+            <p style={{ fontSize: '1.5em', fontWeight: 'bold' }}>
+              Welcome, {userDetails.firstname} {userDetails.lastname}<br></br>
+            </p>
+          )}
+        </div>
+
+      </div>
+
       <label>Product ID:</label>
       <input type="text" value={productId} onChange={(e) => setProductId(e.target.value)} />
 
