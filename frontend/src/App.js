@@ -13,6 +13,8 @@ import HeaderPage from "../src/components/HeroPage/headerPage";
 import Dashboard from "../src/components/Dashboard/dashboard.jsx";
 import Purchase from "../src/components/Ecommerce/purchase.jsx";
 import Confirm from "../src/components/Ecommerce/confirm.jsx"; 
+import Chat from "../src/components/Chats/App.jsx"; 
+
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -31,6 +33,7 @@ const App = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/confirm" element={<Confirm />} /> 
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </Router>
   );

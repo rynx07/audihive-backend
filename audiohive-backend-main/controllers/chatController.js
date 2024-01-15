@@ -1,76 +1,45 @@
-// chatController.js
-import { PrismaClient } from "@prisma/client";
+// controllers/chatController.js
+const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-// Create a new chat
-async function createChat(req, res) {
-  const { receiverId, message } = req.body;
-  const senderId = req.user.id; // Assuming you have user information stored in req.user
+// Get all messages
+const getAllMessages = async (req, res) => {
+  try {
+    const messages = await prisma.message.findMany({
+      include: {
+        user: true,
+      },
+    });
+    res.json(messages);
+  } catch (error) {
+    console.error('Error fetching messages:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+
+// Create a new message
+const createMessage = async (req, res) => {
+  const { content, userId } = req.body;
 
   try {
-    const newChat = await prisma.chat.create({
+    const message = await prisma.message.create({
       data: {
-        senderId,
-        receiverId,
-        message,
+        content,
+        userId,
+      },
+      include: {
+        user: true,
       },
     });
-
-    res.status(201).json(newChat);
+    res.status(201).json(message);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to create chat." });
+    console.error('Error creating message:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
-}
+};
 
-// Retrieve all chats for the logged-in user
-async function getChats(req, res) {
-  const userId = req.user.id; // Assuming you have user information stored in req.user
-
-  try {
-    const chats = await prisma.chat.findMany({
-      where: {
-        OR: [
-          { senderId: userId },
-          { receiverId: userId },
-        ],
-      },
-      orderBy: {
-        createdAt: 'asc',
-      },
-    });
-
-    res.json(chats);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to retrieve chats." });
-  }
-}
-
-// Delete a chat by ID
-async function deleteChat(req, res) {
-  const { id } = req.params;
-  const userId = req.user.id; // Assuming you have user information stored in req.user
-
-  try {
-    const deletedChat = await prisma.chat.delete({
-      where: {
-        id: parseInt(id),
-        OR: [
-          { senderId: userId },
-          { receiverId: userId },
-        ],
-      },
-    });
-
-    res.json(deletedChat);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Failed to delete chat." });
-  }
-}
-
-const chatController = { createChat, getChats, deleteChat };
-
-export default chatController;
+module.exports = {
+  getAllMessages,
+  createMessage,
+};

@@ -1,3 +1,4 @@
+// app.js
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -13,6 +14,7 @@ import fileRouter from './routes/file.js'; // Assuming your file routes are in '
 import ecommerceRouter from './routes/ecommerce.js';
 import chatRouter from './routes/chat.js';
 import dashboardRouter from './routes/dashboard.js';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -34,9 +36,8 @@ app.use('/api/merch', merchRouter);
 app.use('/api/tickets', ticketRouter);
 app.use('/api/ecommerce', ecommerceRouter);
 app.use('/api/files', fileRouter); // Mount your file routes here
-app.use('/api/chats', chatRouter);
+app.use('/api/chats', chatRouter); // Mount your chat routes here
 app.use('/api/dashboard', dashboardRouter);
-
 
 // Start server
 const server = app.listen(port, () =>

@@ -12,7 +12,7 @@ import usersRouter from './routes/users.js';
 import postsRouter from './routes/posts.js';
 import ticketRouter from './routes/ticket.js';
 import ecommerceRouter from './routes/ecommerce.js';
-import chatRouter from './routes/chatRoutes.js';
+import chatRouter from './routes/chat.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -33,7 +33,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/tickets', ticketRouter);
 app.use('/api/ecommerce', ecommerceRouter);
-app.use('/api/chats', chatRouter);
+app.use('/api/chat', chatRouter);
 
 const server = app.listen(port, () => console.log(`🚀 Server is running. Server: ${port}`));
 
