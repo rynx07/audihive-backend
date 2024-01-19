@@ -79,17 +79,6 @@ model Events {
   eventDate String
 }
 
-model File {
-  id        Int      @id @default(autoincrement()) //migrate this pls ty 
-  filename  String
-  mimetype  String
-  data      Bytes
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  profile   Profile? @relation(fields: [profileId], references: [id])
-  profileId Int? // Reference to the Profile model
-}
-
 enum Role {
   ADMIN
   MUSICIAN
@@ -128,4 +117,11 @@ model Chat {
 
   sender    Profile  @relation("SentChats", fields: [senderId], references: [id])
   receiver  Profile  @relation("ReceivedChats", fields: [receiverId], references: [id])
+}
+
+model File {
+  id        Int      @id @default(autoincrement())
+  originalname String
+  profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId Int? // Reference to the Profile model
 }

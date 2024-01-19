@@ -14,6 +14,7 @@ import Dashboard from "../src/components/Dashboard/dashboard.jsx";
 import Purchase from "../src/components/Ecommerce/purchase.jsx";
 import Confirm from "../src/components/Ecommerce/confirm.jsx"; 
 import Chat from "../src/components/Chats/App.jsx"; 
+import Files from "../src/components/AddFile/addfile.jsx"
 
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/confirm" element={<Confirm />} /> 
         <Route path="/chat" element={<Chat />} />
+        <Route path="/addfile" element={<Files />} />
       </Routes>
     </Router>
   );

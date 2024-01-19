@@ -10,10 +10,10 @@ import usersRouter from './routes/users.js';
 import postsRouter from './routes/posts.js';
 import merchRouter from './routes/merch.js';
 import ticketRouter from './routes/ticket.js';
-import fileRouter from './routes/file.js'; // Assuming your file routes are in 'file.js'
 import ecommerceRouter from './routes/ecommerce.js';
 import chatRouter from './routes/chat.js';
 import dashboardRouter from './routes/dashboard.js';
+import filesRouter from './routes/addfile.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,7 +35,7 @@ app.use('/api/posts', postsRouter);
 app.use('/api/merch', merchRouter);
 app.use('/api/tickets', ticketRouter);
 app.use('/api/ecommerce', ecommerceRouter);
-app.use('/api/files', fileRouter); // Mount your file routes here
+app.use('/api/file', filesRouter); // Mount your file routes here
 app.use('/api/chats', chatRouter); // Mount your chat routes here
 app.use('/api/dashboard', dashboardRouter);
 
